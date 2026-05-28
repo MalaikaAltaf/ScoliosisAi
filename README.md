@@ -203,7 +203,9 @@ docker-compose down
 
 Users can upload X-ray images for analysis through an intuitive web interface:
 
-[![Input Interface](../../docs/screenshots/input.png)](https://github.com/MalaikaAltaf/ScoliosisAi/blob/main/docs/screenshots/input.PNG)
+![Input Interface](docs/screenshots/input.png)
+
+
 
 **Features:**
 - Drag-and-drop image upload
@@ -215,7 +217,7 @@ Users can upload X-ray images for analysis through an intuitive web interface:
 
 View comprehensive analysis results with detailed Cobb angle measurements and severity assessment:
 
-[![Dashboard Results](../../docs/screenshots/dashboard.png)](https://github.com/MalaikaAltaf/ScoliosisAi/blob/main/docs/screenshots/dashboard.PNG)
+![Dashboard Results](docs/screenshots/dashboard.png)
 
 **Displayed Information:**
 - ✅ Proximal Thoracic (PT) Cobb angle
