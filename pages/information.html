@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scoliosis Information - Educational Guide</title>
+  <meta name="description" content="Learn about scoliosis, Cobb angle measurement, severity classifications, types, treatments, and when to see a doctor."/>
+  <link rel="stylesheet" href="../assets/css/styles.css"/>
+  <link rel="stylesheet" href="../assets/css/information.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="8" fill="#EEF6FF"/>
+      <path d="M16 4 C13 4 12 6 12 8 C12 10 14 11 16 12 C18 11 20 10 20 8 C20 6 19 4 16 4Z" fill="#14B8A6"/>
+      <rect x="14.5" y="11" width="3" height="2.5" rx="1" fill="#14B8A6"/>
+      <path d="M13 13.5 C11 14 10 15.5 10 17 C10 18.5 11 19.5 13 20" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M19 13.5 C21 14 22 15.5 22 17 C22 18.5 21 19.5 19 20" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="14.5" y="14" width="3" height="2.5" rx="1" fill="#14B8A6"/>
+      <rect x="14.5" y="17" width="3" height="2.5" rx="1" fill="#14B8A6"/>
+      <rect x="14.5" y="20" width="3" height="2.5" rx="1" fill="#14B8A6"/>
+      <rect x="14.5" y="23" width="3" height="2.5" rx="1" fill="#14B8A6"/>
+    </svg>
+    <span class="nav-brand-text">Scoliosis<span> Detection</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Dashboard</a></li>
+    <li><a href="information.html" class="active">Information</a></li>
+    <li><a href="specialist.html">Find Specialist</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html">Dashboard</a>
+  <a href="information.html" class="active">Information</a>
+  <a href="specialist.html">Find Specialist</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="info-hero">
+  <div class="container info-hero-row">
+    <div class="info-hero-text">
+      <div class="badge badge-blue" data-i18n="hero-badge">Educational Resource</div>
+      <h1 class="section-title" data-i18n="hero-title">Understanding Scoliosis</h1>
+      <p class="section-sub" data-i18n="hero-subtitle">Key facts about scoliosis - measurement, severity, types, and care.</p>
+    </div>
+    <div class="language-toggle lang-bar info-lang">
+      <button class="lang-btn lang-active" data-lang="en" id="langBtnEn">English</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="ur" id="langBtnUr">اردو</button>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="info-layout container">
+
+  <!-- SIDEBAR -->
+  <aside class="info-sidebar sidebar" id="infoSidebar">
+    <p class="sidebar-heading" data-i18n="sidebar-heading">On This Page</p>
+    <nav class="sidebar">
+      <ul>
+        <li><a href="#what" class="sidebar-link active" data-i18n="sidebar-what">Overview</a></li>
+        <li><a href="#cobb" class="sidebar-link" data-i18n="sidebar-cobb">Cobb Angle</a></li>
+        <li><a href="#severity" class="sidebar-link" data-i18n="sidebar-severity">Severity</a></li>
+        <li><a href="#types" class="sidebar-link" data-i18n="sidebar-types">Types</a></li>
+        <li><a href="#treatment" class="sidebar-link" data-i18n="sidebar-treatment">Treatment</a></li>
+        <li><a href="#warning" class="sidebar-link" data-i18n="sidebar-warning">See a Doctor</a></li>
+        <li><a href="#disclaimer" class="sidebar-link" data-i18n="sidebar-disclaimer">Disclaimer</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="info-content">
+
+    <!-- MOBILE SECTION DROPDOWN -->
+    <div class="section-dropdown-wrap" id="sectionDropdownWrap" style="display:none;">
+      <select class="section-dropdown" id="sectionDropdown" aria-label="Jump to section">
+        <option value="">- Jump to section -</option>
+        <option value="#what">Overview</option>
+        <option value="#cobb">Cobb Angle</option>
+        <option value="#severity">Severity</option>
+        <option value="#types">Types</option>
+        <option value="#treatment">Treatment</option>
+        <option value="#warning">See a Doctor</option>
+        <option value="#disclaimer">Disclaimer</option>
+      </select>
+    </div>
+
+    <!-- 1. OVERVIEW -->
+    <section class="info-section fade-in" id="what">
+      <h2 class="info-section-title" data-i18n="what-title">What is Scoliosis?</h2>
+      <p class="info-lead" data-i18n="what-lead">A sideways curve of the spine - often shaped like an "S" or "C" when viewed from behind.</p>
+      <ul class="info-list">
+        <li data-i18n="what-li1">Usually appears between ages 10-15</li>
+        <li data-i18n="what-li2">Affects about 2-3% of people worldwide</li>
+        <li data-i18n="what-li3">More common in females (about 3:1 ratio)</li>
+      </ul>
+      <div class="info-stats">
+        <div class="info-stat"><span class="info-stat-num" data-i18n="what-stat1-num">2-3%</span><span class="info-stat-label" data-i18n="what-stat1-label">Prevalence</span></div>
+        <div class="info-stat"><span class="info-stat-num" data-i18n="what-stat2-num">10-15</span><span class="info-stat-label" data-i18n="what-stat2-label">Peak age</span></div>
+        <div class="info-stat"><span class="info-stat-num" data-i18n="what-stat3-num">3:1</span><span class="info-stat-label" data-i18n="what-stat3-label">F : M ratio</span></div>
+      </div>
+    </section>
+
+    <!-- 2. COBB ANGLE -->
+    <section class="info-section fade-in" id="cobb">
+      <h2 class="info-section-title" data-i18n="cobb-title">Cobb Angle</h2>
+      <p class="info-lead" data-i18n="cobb-lead">The standard X-ray measure of how large the spinal curve is.</p>
+      <ol class="info-steps">
+        <li data-i18n="cobb-s1">Find the most tilted vertebra at the top and bottom of the curve</li>
+        <li data-i18n="cobb-s2">Draw lines along the endplates of those vertebrae</li>
+        <li data-i18n="cobb-s3">The angle between the lines is the Cobb angle</li>
+      </ol>
+    </section>
+
+    <!-- 3. SEVERITY -->
+    <section class="info-section fade-in" id="severity">
+      <h2 class="info-section-title" data-i18n="severity-title">Severity Levels</h2>
+      <p class="info-lead" data-i18n="severity-lead">Classification based on Cobb angle - guides treatment planning.</p>
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th data-i18n="severity-th-1">Level</th>
+              <th data-i18n="severity-th-2">Cobb Angle</th>
+              <th data-i18n="severity-th-3">Typical Care</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-success" data-i18n="sev-r1-c1">Normal</span></td>
+              <td data-i18n="sev-r1-c2">&lt; 10°</td>
+              <td data-i18n="sev-r1-c3">No treatment needed</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-muted" data-i18n="sev-r2-c1">Mild</span></td>
+              <td data-i18n="sev-r2-c2">10° - 25°</td>
+              <td data-i18n="sev-r2-c3">Check-ups every 4-6 months</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-warn" data-i18n="sev-r3-c1">Moderate</span></td>
+              <td data-i18n="sev-r3-c2">25° - 40°</td>
+              <td data-i18n="sev-r3-c3">Bracing + physiotherapy</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-danger" data-i18n="sev-r4-c1">Severe</span></td>
+              <td data-i18n="sev-r4-c2">&gt; 40°</td>
+              <td data-i18n="sev-r4-c3">Surgery may be required</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4. TYPES -->
+    <section class="info-section fade-in" id="types">
+      <h2 class="info-section-title" data-i18n="types-title">Types of Scoliosis</h2>
+      <p class="info-lead" data-i18n="types-lead">Four main categories by cause.</p>
+      <div class="info-rows">
+        <div class="info-row">
+          <div class="info-row-head">
+            <strong data-i18n="type-1-name">Idiopathic</strong>
+            <span class="badge badge-accent" data-i18n="type-1-tag">~80% of cases</span>
+          </div>
+          <p data-i18n="type-1-desc">Unknown cause; most common in adolescents (AIS).</p>
+        </div>
+        <div class="info-row">
+          <div class="info-row-head">
+            <strong data-i18n="type-2-name">Congenital</strong>
+            <span class="badge badge-blue" data-i18n="type-2-tag">From birth</span>
+          </div>
+          <p data-i18n="type-2-desc">Spine forms incorrectly during fetal growth.</p>
+        </div>
+        <div class="info-row">
+          <div class="info-row-head">
+            <strong data-i18n="type-3-name">Neuromuscular</strong>
+            <span class="badge badge-warn" data-i18n="type-3-tag">Linked condition</span>
+          </div>
+          <p data-i18n="type-3-desc">With cerebral palsy, muscular dystrophy, or similar.</p>
+        </div>
+        <div class="info-row">
+          <div class="info-row-head">
+            <strong data-i18n="type-4-name">Degenerative</strong>
+            <span class="badge badge-danger" data-i18n="type-4-tag">Adults</span>
+          </div>
+          <p data-i18n="type-4-desc">Disc wear and spine changes in older age.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TREATMENT -->
+    <section class="info-section fade-in" id="treatment">
+      <h2 class="info-section-title" data-i18n="treatment-title">Treatment Options</h2>
+      <p class="info-lead" data-i18n="treatment-lead">Depends on Cobb angle, age, and how fast the curve changes.</p>
+      <div class="info-table-wrap">
+        <table class="info-table info-table-2col">
+          <thead>
+            <tr>
+              <th data-i18n="treat-th-1">Cobb Angle</th>
+              <th data-i18n="treat-th-2">Treatment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="treat-r1-c1">10° - 25°</td>
+              <td data-i18n="treat-r1-c2">Observation &amp; exercise</td>
+            </tr>
+            <tr>
+              <td data-i18n="treat-r2-c1">20° - 40°</td>
+              <td data-i18n="treat-r2-c2">Physiotherapy (e.g. Schroth)</td>
+            </tr>
+            <tr>
+              <td data-i18n="treat-r3-c1">25° - 45°</td>
+              <td data-i18n="treat-r3-c2">Spinal bracing (TLSO, etc.)</td>
+            </tr>
+            <tr>
+              <td data-i18n="treat-r4-c1">40°+</td>
+              <td data-i18n="treat-r4-c2">Surgical evaluation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 6. WARNING SIGNS -->
+    <section class="info-section fade-in" id="warning">
+      <h2 class="info-section-title" data-i18n="warning-title">When to See a Doctor</h2>
+      <p class="info-lead" data-i18n="warning-lead">Book an appointment if you notice:</p>
+      <ul class="info-list info-list-warn">
+        <li data-i18n="warn-1">Uneven shoulders or one hip higher</li>
+        <li data-i18n="warn-2">Rib hump when bending forward</li>
+        <li data-i18n="warn-3">Persistent back pain (especially in teens)</li>
+        <li data-i18n="warn-4">Breathing difficulty</li>
+        <li data-i18n="warn-5">Clothes fitting unevenly</li>
+      </ul>
+    </section>
+
+    <!-- 7. DISCLAIMER -->
+    <section class="info-section fade-in" id="disclaimer">
+      <div class="info-note">
+        <h3 class="info-note-title" data-i18n="disclaimer-title">Disclaimer</h3>
+        <ul class="info-list info-list-compact">
+          <li data-i18n="disc-1">This page is for education only - not a substitute for professional medical advice.</li>
+          <li data-i18n="disc-2">The AI system is a research prototype and must not be used for clinical diagnosis.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- BACK TO TOP BUTTON -->
+<button class="back-to-top" id="backToTopBtn" aria-label="Back to top" title="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-brand-name">Scoliosis<span> Detection</span></span>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Dashboard</a>
+        <a href="information.html">Information</a>
+        <a href="specialist.html">Find Specialist</a>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="footer-bottom">
+      <span class="footer-copy">SpineAI - AI-Assisted Research Prototype<br/>NOT for Clinical Use - Always consult a qualified medical professional.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/information.js"></script>
+<script src="../assets/js/information-i18n.js"></script>
+<script>
+  (function () {
+    const btn = document.getElementById('backToTopBtn');
+    if (btn) {
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    const dropdown = document.getElementById('sectionDropdown');
+    const dropdownWrap = document.getElementById('sectionDropdownWrap');
+    if (dropdown && dropdownWrap) {
+      const checkMobile = () => {
+        dropdownWrap.style.display = window.innerWidth <= 768 ? 'block' : 'none';
+      };
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      dropdown.addEventListener('change', (e) => {
+        if (e.target.value) {
+          const target = document.querySelector(e.target.value);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+          e.target.value = '';
+        }
+      });
+    }
+  })();
+</script>
+<script>
+  /* Sidebar active on scroll */
+  const sections = document.querySelectorAll('.info-section');
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        sidebarLinks.forEach((l) => l.classList.remove('active'));
+        const link = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach((s) => io.observe(s));
+</script>
+</body>
+</html>

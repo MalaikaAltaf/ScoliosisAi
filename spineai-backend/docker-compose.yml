@@ -1,0 +1,56 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spineai-backend
+    ports:
+      - '8000:8000'
+    volumes:
+      # IMPORTANT: Model weights are FOLDERS, not .pth files.
+      # Mount the entire models/ directory so both folders are accessible:
+      #   ./models/best_efficientnet_s4/     → /app/models/best_efficientnet_s4/
+      #   ./models/best_efficientnet_se_s4/  → /app/models/best_efficientnet_se_s4/
+      # Run verify.sh before docker-compose up to confirm folders exist.
+      - ./models:/app/models:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      # FIX 1 — ImportError: libGL.so.1
+      # Caused by: albumentations importing OpenCV headless in slim containers
+      # Solution: Dockerfile installs libgl1-mesa-glx and libglib2.0-0
+      # Already handled in the Dockerfile apt-get install block.
+
+      # FIX 2 — Model loading fails silently
+      # Caused by: models/ folder empty or wrong permissions
+      # Solution: volumes mount is :ro (read-only) — folders must exist on host
+      # Run verify.sh before docker-compose up.
+
+      # FIX 3 — torch.load weights_only warning
+      # Caused by: PyTorch 2.x default weights_only=True cannot load full checkpoints
+      # Solution: load_pth() in models.py passes weights_only=False explicitly.
+
+      # FIX 4 — Healthcheck kills container before startup
+      # Caused by: start_period too short for CPU model loading (10–30s)
+      # Solution: start_period: 60s gives enough time for both models to load.
+      test: ['CMD', 'curl', '-f', 'http://localhost:8000/health']
+      interval: 30s
+      timeout: 15s
+      retries: 3
+      start_period: 60s   # PyTorch CPU model loading takes 10–30s — do not lower this
+
+  frontend:
+    image: nginx:1.25-alpine
+    container_name: spineai-frontend
+    ports:
+      - '80:80'
+    volumes:
+      # Static frontend files (index.html, assets/, pages/)
+      - ../:/usr/share/nginx/html:ro
+      # Custom nginx config with API proxy rules
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      backend:
+        condition: service_started
+    restart: unless-stopped

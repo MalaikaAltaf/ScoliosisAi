@@ -1,0 +1,62 @@
+── 1. MEDICAL MODEL CHECKPOINTS & BINARIES ──
+Heavy weights, zip files, and model directories must never be pushed to GitHub
+spineai-backend/models/best_efficientnet_s4/
+spineai-backend/models/best_efficientnet_se_s4/
+*.pth
+*.onnx
+*.zip
+*.tar.gz
+*.mar
+
+── 2. LOCAL VIRTUAL ENVIRONMENTS ──
+Exclude your local python environment completely from source control
+venv/
+/venv/
+.venv/
+env/
+ENV/
+bin/
+lib/
+lib64/
+include/
+share/
+pyvenv.cfg
+
+── 3. PYTHON INTERMEDIATE RUNTIME TRASH & CACHE ──
+Prevents bytecode caching files from polluting repo commits
+pycache/
+*.py[cod]
+*$py.class
+spineai-backend/app/pycache/
+.pytest_cache/
+.exec/
+.ipynb_checkpoints/
+.mypy_cache/
+.ruff_cache/
+
+── 4. CONFIGURATIONS & ENVIRONMENT SECRETS ──
+Never commit database passwords, API endpoints, or environment definitions
+.env
+.env.*
+spineai-backend/.env
+spineai-frontend/.env
+
+── 5. CONTAINER ARCHITECTURE VOLUMES ──
+Ignore local runtime tracking and mapped docker volumes
+.docker/
+docker-data/
+postgres-data/
+*.log
+
+── 6. IDE, EDITORS, & SYSTEM JUNK ──
+Clean up editor metadata structures and thumbnail index tracks
+.vscode/
+.idea/
+*.suo
+.ntvs
+*.njsproj
+*.sln
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

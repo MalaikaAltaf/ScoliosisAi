@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Specialist — Scoliosis Detection</title>
+  <meta name="description" content="Find scoliosis specialists and orthopedic surgeons near you across Pakistan."/>
+  <link rel="stylesheet" href="../assets/css/styles.css"/>
+  <link rel="stylesheet" href="../assets/css/specialist.css"/>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-brand">
+    <svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#EEF6FF"/><path d="M16 4C13 4 12 6 12 8s2 3 4 4c2-1 4-2 4-4s-1-4-4-4z" fill="#14B8A6"/><rect x="14.5" y="11" width="3" height="2.5" rx="1" fill="#14B8A6"/><path d="M13 13.5C11 14 10 15.5 10 17s1 2 3 2.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><path d="M19 13.5C21 14 22 15.5 22 17s-1 2-3 2.5" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round"/><rect x="14.5" y="14" width="3" height="2.5" rx="1" fill="#14B8A6"/><rect x="14.5" y="17" width="3" height="2.5" rx="1" fill="#14B8A6"/><rect x="14.5" y="20" width="3" height="2.5" rx="1" fill="#14B8A6"/><rect x="14.5" y="23" width="3" height="2.5" rx="1" fill="#14B8A6"/></svg>
+    <span class="nav-brand-text">Scoliosis<span> Detection</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Dashboard</a></li>
+    <li><a href="information.html">Information</a></li>
+    <li><a href="specialist.html" class="active">Find Specialist</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html">Dashboard</a>
+  <a href="information.html">Information</a>
+  <a href="specialist.html" class="active">Find Specialist</a>
+</div>
+
+<main class="spec-page">
+  <!-- Hero -->
+  <section class="spec-hero">
+    <div class="container">
+      <div class="spec-hero-inner fade-in">
+        <div class="badge badge-accent">Pakistan Specialists</div>
+        <h1 class="section-title">Find the Right Specialist</h1>
+        <p class="section-sub">Check your Cobb angle, browse hospitals, and prepare for your appointment — all in one place.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cobb Checker -->
+  <section class="spec-block" id="checker">
+    <div class="container">
+      <div class="block-header fade-in">
+        <span class="block-num">01</span>
+        <div>
+          <h2 class="block-title">Cobb Angle Recommendation</h2>
+          <p class="block-sub">Enter your measurement to see what type of care may be appropriate.</p>
+        </div>
+      </div>
+      <div class="checker-card fade-in">
+        <div class="checker-left">
+          <div class="checker-input-row">
+            <div class="checker-input-wrap">
+              <input type="number" id="cobbInput" class="cobb-input" placeholder="e.g. 32" min="0" max="120"/>
+              <span class="cobb-unit">degrees</span>
+            </div>
+            <button class="btn btn-primary" id="checkBtn">Get Recommendation</button>
+          </div>
+        </div>
+        <div class="checker-result" id="checkerResult" style="display:none">
+          <div class="rec-card" id="recCard"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hospitals -->
+  <section class="spec-block spec-block-alt" id="hospitals">
+    <div class="container">
+      <div class="block-header fade-in">
+        <span class="block-num">02</span>
+        <div>
+          <h2 class="block-title">Hospitals &amp; Clinics</h2>
+          <p class="block-sub">Orthopedic and spine specialists across major cities in Pakistan.</p>
+        </div>
+      </div>
+      <div class="filter-btns fade-in">
+        <button class="filter-btn active" data-city="all">All Cities</button>
+        <button class="filter-btn" data-city="islamabad">Islamabad</button>
+        <button class="filter-btn" data-city="rawalpindi">Rawalpindi</button>
+        <button class="filter-btn" data-city="lahore">Lahore</button>
+        <button class="filter-btn" data-city="karachi">Karachi</button>
+      </div>
+      <div class="hospital-grid" id="hospitalGrid"></div>
+    </div>
+  </section>
+
+  <!-- Appointment -->
+  <section class="spec-block" id="appointment">
+    <div class="container">
+      <div class="block-header fade-in">
+        <span class="block-num">03</span>
+        <div>
+          <h2 class="block-title">Before Your Visit</h2>
+          <p class="block-sub">A short checklist so you do not forget the essentials.</p>
+        </div>
+      </div>
+      <div class="apt-card apt-card-single fade-in">
+        <div class="checklist" id="checklist">
+          <label class="check-item"><input type="checkbox" id="c1"/> <span>Bring all previous X-rays and MRI scans</span></label>
+          <label class="check-item"><input type="checkbox" id="c2"/> <span>Bring CNIC / ID document</span></label>
+          <label class="check-item"><input type="checkbox" id="c3"/> <span>List all current medications</span></label>
+          <label class="check-item"><input type="checkbox" id="c4"/> <span>Prepare list of questions for your doctor</span></label>
+        </div>
+        <div class="apt-progress">
+          <div class="apt-prog-bar"><div class="apt-prog-fill" id="aptProgFill"></div></div>
+          <span class="apt-prog-label" id="aptProgLabel">0 / 4 completed</span>
+        </div>
+        <button class="btn btn-secondary apt-download" id="downloadChecklist">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v7M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 13h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Download Checklist
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-brand-name">Scoliosis<span> Detection</span></span>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Dashboard</a>
+        <a href="information.html">Information</a>
+        <a href="specialist.html">Find Specialist</a>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="footer-bottom">
+      <span class="footer-copy">SpineAI — AI-Assisted Research Prototype<br/>NOT for Clinical Use — Always consult a qualified medical professional.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/specialist.js"></script>
+</body>
+</html>
