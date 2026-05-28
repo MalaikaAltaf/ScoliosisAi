@@ -203,7 +203,7 @@ docker-compose down
 
 Users can upload X-ray images for analysis through an intuitive web interface:
 
-![Input Interface](../../docs/screenshots/input.png)
+[![Input Interface](../../docs/screenshots/input.png)](https://github.com/MalaikaAltaf/ScoliosisAi/blob/main/docs/screenshots/input.PNG)
 
 **Features:**
 - Drag-and-drop image upload
@@ -215,7 +215,7 @@ Users can upload X-ray images for analysis through an intuitive web interface:
 
 View comprehensive analysis results with detailed Cobb angle measurements and severity assessment:
 
-![Dashboard Results](../../docs/screenshots/dashboard.png)
+[![Dashboard Results](../../docs/screenshots/dashboard.png)](https://github.com/MalaikaAltaf/ScoliosisAi/blob/main/docs/screenshots/dashboard.PNG)
 
 **Displayed Information:**
 - ✅ Proximal Thoracic (PT) Cobb angle
@@ -226,143 +226,6 @@ View comprehensive analysis results with detailed Cobb angle measurements and se
 - ✅ Processing time
 - ✅ Model used (B0 or SE variant)
 
----
-
-## �📖 API Documentation
-
-### Interactive API Documentation
-
-Once the server is running, visit **`http://localhost:8000/docs`** for an interactive Swagger UI where you can test endpoints directly.
-
-### Endpoints
-
-#### 1. Health Check
-
-**GET** `/health`
-
-Returns API and model status.
-
-**Response (200 OK):**
-```json
-{
-  "status": "healthy",
-  "timestamp": "2024-05-28T10:30:45.123456Z",
-  "models_loaded": ["efficientnet_b0", "efficientnet_se"],
-  "api_version": "1.0.0"
-}
-```
-
-**Use Case:** Kubernetes liveness probes, monitoring dashboards, deployment verification.
-
----
-
-#### 2. Predict (Image Analysis)
-
-**POST** `/predict`
-
-Analyzes a spinal X-ray image and returns Cobb angle measurements and severity assessment.
-
-**Request:**
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `file` | File (multipart/form-data) | Yes | X-ray image (JPEG/PNG, max 10 MB) |
-
-**cURL Example:**
-
-```bash
-curl -X POST "http://localhost:8000/predict" \
-  -H "accept: application/json" \
-  -F "file=@path/to/xray.jpg"
-```
-
-**Python Requests Example:**
-
-```python
-import requests
-
-with open('xray.jpg', 'rb') as f:
-    files = {'file': f}
-    response = requests.post('http://localhost:8000/predict', files=files)
-    print(response.json())
-```
-
-**Response (200 OK):**
-
-```json
-{
-  "pt_angle": 12.5,
-  "mt_angle": 28.3,
-  "tl_angle": 8.1,
-  "severity": "moderate",
-  "model_used": "efficientnet_se",
-  "routing_reason": "Preferred SE model (higher accuracy)",
-  "confidence": 0.92,
-  "processing_ms": 245
-}
-```
-
-**Response Fields:**
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `pt_angle` | float | Proximal Thoracic Cobb angle (degrees) |
-| `mt_angle` | float | Main Thoracic Cobb angle (degrees) |
-| `tl_angle` | float | Thoracolumbar Cobb angle (degrees) |
-| `severity` | string | Classification: `normal`, `mild`, `moderate`, `severe` |
-| `model_used` | string | Model that generated prediction (`efficientnet_b0` or `efficientnet_se`) |
-| `routing_reason` | string | Explanation for model selection |
-| `confidence` | float | Prediction confidence (0.0-1.0) |
-| `processing_ms` | int | Total processing time in milliseconds |
-
-**Error Responses:**
-
-| Status | Error | Description |
-|--------|-------|-------------|
-| 400 | Invalid file type | Only JPEG/PNG images accepted |
-| 400 | File size exceeds 10 MB | Upload a smaller image |
-| 400 | Image too small | Minimum dimension is 100 px |
-| 400 | Empty file | File must contain data |
-| 500 | Model inference failed | Contact support with image details |
-
----
-
-## ⚙️ Configuration
-
-### Environment Variables
-
-Create a `.env` file in the `spineai-backend/` directory:
-
-```bash
-# API Configuration
-API_PORT=8000
-API_HOST=0.0.0.0
-
-# Model Configuration
-MODEL_DEVICE=cpu                 # 'cpu' or 'cuda' (if GPU available)
-MODEL_B0_PATH=/app/models/best_efficientnet_s4
-MODEL_SE_PATH=/app/models/best_efficientnet_se_s4
-
-# Image Validation
-MAX_IMAGE_SIZE=10485760         # 10 MB in bytes
-MIN_IMAGE_DIMENSION=100         # Pixels
-
-# Logging
-LOG_LEVEL=INFO                  # DEBUG, INFO, WARNING, ERROR
-PYTHONUNBUFFERED=1              # Unbuffered logging (important for Docker)
-
-# CORS (Cross-Origin Resource Sharing)
-CORS_ORIGINS=["*"]              # Restrict in production to specific domains
-```
-
-### Docker Environment
-
-Configured in `docker-compose.yml`:
-
-```yaml
-environment:
-  - PYTHONUNBUFFERED=1           # Real-time log output
-```
 
 ---
 
@@ -563,74 +426,7 @@ All included in Dockerfile.
 
 ---
 
-## 🚢 Deployment
 
-### Kubernetes Deployment
-
-Example `k8s-deployment.yaml`:
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: spineai-backend
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: spineai-backend
-  template:
-    metadata:
-      labels:
-        app: spineai-backend
-    spec:
-      containers:
-      - name: backend
-        image: your-registry/spineai-backend:latest
-        ports:
-        - containerPort: 8000
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8000
-          initialDelaySeconds: 60
-          periodSeconds: 30
-        volumeMounts:
-        - name: models
-          mountPath: /app/models
-          readOnly: true
-      volumes:
-      - name: models
-        persistentVolumeClaim:
-          claimName: spineai-models-pvc
-```
-
-### Azure Container Instances
-
-```bash
-az container create \
-  --resource-group myResourceGroup \
-  --name spineai-backend \
-  --image your-registry/spineai-backend:latest \
-  --ports 8000 \
-  --cpu 2 \
-  --memory 4 \
-  --environment-variables \
-    PYTHONUNBUFFERED=1
-```
-
-### Cloud Run
-
-```bash
-gcloud run deploy spineai-backend \
-  --source . \
-  --platform managed \
-  --memory 4Gi \
-  --cpu 2 \
-  --port 8000
-```
-
----
 
 ## 🤝 Contributing
 
